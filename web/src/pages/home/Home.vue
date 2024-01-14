@@ -1,20 +1,21 @@
 <template>
-  <q-card flat square class="q-pa-md" style="height: 100vh">
+  <q-card flat square class="q-py-md" style="height: 100vh">
     <q-toolbar-title class="q-pa-md text-center text-h4">Меню</q-toolbar-title>
 
-    <q-card-section>
-      <q-list bordered class="rounded-borders">
+    <q-card-section class="no-padding">
+      <q-list class="rounded-borders">
         <q-expansion-item
             v-for="item in items"
             :key="item.id"
-            expand-separator
             header-class="text-primary"
             :label="item.label"
             :icon="item.icon"
         >
           <q-card>
-            <q-card-section>
-              {{ `#${item.id} ${item.label} - ${item.name}` }}
+            <q-card-section
+                v-for="food in item.foods"
+                :key="food.name">
+              {{ `#${food.id} ${food.label} - ${food.name}` }}
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -31,76 +32,50 @@
 const items = [
   {
     id: 1,
-    label: 'Шашлык',
-    name: 'shashlik',
+    label: 'Гриль',
+    name: 'grill',
     icon: 'kebab_dining',
+    foods: [
+      {id: 1, label: 'Шашлык', name: 'shashlik'},
+      {id: 2, label: 'Люля-кебаб', name: 'lula_kebab'},
+    ],
   },
   {
     id: 2,
-    label: 'Люля-кебаб',
-    name: 'lula_kebab',
-    icon: 'kebab_dining',
+    label: 'Блюда',
+    name: 'dishes',
+    icon: 'restaurant_menu',
+    foods: [
+      {id: 1, label: 'Блюда', name: 'main_dishes'},
+      {id: 2, label: 'Закуски', name: 'snacks'},
+      {id: 3, label: 'Добавки', name: 'additives'},
+      {id: 4, label: 'Денер', name: 'doner'},
+    ],
   },
   {
     id: 3,
-    label: 'Блюда',
-    name: 'dishes',
-    icon: 'food',
+    label: 'Фастфуд',
+    name: 'fast_food',
+    icon: 'fastfood',
+    foods: [
+      {id: 5, label: 'Шаверма', name: 'shaverma'},
+      {id: 1, label: 'Гамбургеры', name: 'hamburgers'},
+      {id: 2, label: 'Чизбургеры', name: 'cheeseburgers'},
+      {id: 3, label: 'Хот-доги', name: 'hot_dogs'},
+      {id: 4, label: 'Комбо Сет', name: 'combo_set'},
+    ],
   },
   {
     id: 4,
-    label: 'Закуски',
-    name: 'snacks',
-    icon: 'food',
-  },
-  {
-    id: 5,
-    label: 'Добавки',
-    name: 'additives',
-    icon: 'food',
-  },
-  {
-    id: 6,
-    label: 'Шаверма в лаваше',
-    name: 'shawarma',
-    icon: 'food',
-  },
-  {
-    id: 7,
-    label: 'Денер',
-    name: 'doner',
-    icon: 'food',
-  },
-  {
-    id: 8,
-    label: 'Гамбургеры',
-    name: 'hamburgers',
-    icon: 'food',
-  },
-  {
-    id: 9,
-    label: 'Чизбургеры',
-    name: 'cheeseburgers',
-    icon: 'food',
-  },
-  {
-    id: 10,
-    label: 'Хот-доги',
-    name: 'hot_dogs',
-    icon: 'food',
-  },
-  {
-    id: 11,
-    label: 'Комбо Сет',
-    name: 'combo_set',
-    icon: 'food',
-  },
-  {
-    id: 12,
     label: 'Напитки',
     name: 'drinks',
-    icon: 'food',
-  }
+    icon: 'local_drink',
+    foods: [
+      {id: 1, label: 'Алкогольные', name: 'alcoholic_drinks'},
+      {id: 2, label: 'Безалкогольные', name: 'soft_drinks'},
+    ],
+  },
 ];
+
 
 </script>
