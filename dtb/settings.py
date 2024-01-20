@@ -20,7 +20,7 @@ if os.path.isfile(dotenv_file):
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(
     "DJANGO_SECRET_KEY",
-    'x%#3&%giwv8f0+%r946en7z&d@9*rc$sl0qoql56xr%bh^w2mj',
+    'x%#3&%giwv8f0+%r9vgsveren7z&d@9*rc$sl0qoql56xr%bh^w2mj',
 )
 
 if os.environ.get('DJANGO_DEBUG', default=False) in ['True', 'true', '1', True]:
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     # local apps
     'users.apps.UsersConfig',
+    'sales',
+    'addresses',
 ]
 
 MIDDLEWARE = [
@@ -180,4 +182,6 @@ TELEGRAM_LOGS_CHAT_ID = os.getenv("TELEGRAM_LOGS_CHAT_ID", default=None)
 #     # django.contrib.auth) you may enable sending PII data.
 #     send_default_pii=True
 # )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
