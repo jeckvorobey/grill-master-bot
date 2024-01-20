@@ -15,6 +15,7 @@ class CreateTracker(models.Model):
 
 class CreateUpdateTracker(CreateTracker):
     updated_at = models.DateTimeField(auto_now=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     class Meta(CreateTracker.Meta):
         abstract = True

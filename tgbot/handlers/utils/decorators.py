@@ -4,7 +4,7 @@ from typing import Callable
 from telegram import Update, ChatAction
 from telegram.ext import CallbackContext
 
-from users.models import User
+from apps.users.models import User
 
 
 def admin_only(func: Callable):

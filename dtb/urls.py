@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 import debug_toolbar
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
@@ -25,4 +27,4 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('', views.index, name="index"),
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

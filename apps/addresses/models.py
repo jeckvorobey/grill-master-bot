@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
-from users.models import User
+from apps.users.models import User
+from utils.models import CreateUpdateTracker
 
 
 class ActiveAddressManager(models.Manager):
@@ -9,14 +10,11 @@ class ActiveAddressManager(models.Manager):
 		return super().get_queryset().filter(deleted_at__isnull=True)
 
 
-class Address(models.Model):
+class Address(CreateUpdateTracker):
 	id = models.BigAutoField(primary_key=True)
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	address = models.CharField(max_length=255)
 	name = models.CharField(max_length=100, null=True)
-	update_at = models.DateTimeField(auto_now=True)
-	created_at = models.DateTimeField(auto_now_add=True)
-	deleted_at = models.DateTimeField(blank=True, null=True)
 	
 	# Объект с не удалёнными адресами
 	objects = ActiveAddressManager()

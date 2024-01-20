@@ -4,4 +4,4 @@ from .models import Sale
 
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
-	list_display = ['label', 'value']
+	list_display = ['label', 'value', 'created_at', 'update_at']

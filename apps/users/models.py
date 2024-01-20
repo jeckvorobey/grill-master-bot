@@ -1,11 +1,11 @@
 from __future__ import annotations
-
 from typing import Union, Optional, Tuple
 
 from django.db import models
 from django.db.models import QuerySet, Manager
 from telegram import Update
 from telegram.ext import CallbackContext
+from apps.sales.models import Sale
 
 from tgbot.handlers.utils.info import extract_user_data_from_update
 from utils.models import CreateUpdateTracker, nb, CreateTracker, GetOrNoneManager
@@ -23,6 +23,8 @@ class User(CreateUpdateTracker):
     last_name = models.CharField(max_length=256, **nb)
     language_code = models.CharField(max_length=8, help_text="Telegram client's lang", **nb)
     deep_link = models.CharField(max_length=64, **nb)
+    
+    sale = models.ForeignKey(Sale, on_delete=models.SET_NULL, null=True, blank=True)
 
     is_blocked_bot = models.BooleanField(default=False)
 
