@@ -7,7 +7,7 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "outDir": "out", // 指定编译器的输出 js 的目录
+    "outDir": "out",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
@@ -25,7 +25,9 @@
       "vite/client"
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/*.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue",
+    "src/types/*.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "dist"]
 }

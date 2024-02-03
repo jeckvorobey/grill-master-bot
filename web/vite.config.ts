@@ -15,22 +15,22 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [
     vue({
-      template: { transformAssetUrls },
+      template: { transformAssetUrls }
     }),
     quasar({
-      sassVariables: 'src/assets/style/quasar-variables.sass',
+      sassVariables: 'src/assets/style/quasar-variables.sass'
     }),
     legacy({
-      targets: ['defaults', 'not IE 11'],
+      targets: ['defaults', 'not IE 11']
     }),
     AutoImport({
-      // targets to transform
-      // include: [
-      //   /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-      //   /\.vue$/,
-      //   /\.vue\?vue/, // .vue
-      //   /\.md$/, // .md
-      // ],
+      // targets to transform,
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/ // .md
+      ],
 
       // global imports to register
       imports: [
@@ -43,9 +43,9 @@ export default defineConfig({
             // named imports
             'useMouse', // import { useMouse } from '@vueuse/core',
             // alias
-            ['useFetch', 'useMyFetch'], // import { useFetch as useMyFetch } from '@vueuse/core',
-          ],
-        },
+            ['useFetch', 'useMyFetch'] // import { useFetch as useMyFetch } from '@vueuse/core',
+          ]
+        }
       ],
       dts: 'types/auto-imports.d.ts',
 
@@ -53,27 +53,27 @@ export default defineConfig({
       // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
       eslintrc: {
         enabled: true, // Default `false`
-        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
+        filepath: './.eslintrc-auto-import.json' // Default `./.eslintrc-auto-import.json`
         // globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-      },
+      }
     }),
     Components({
       resolvers: [QuasarResolver()],
-      dts: 'types/components.d.ts',
-    }),
+      dts: 'types/components.d.ts'
+    })
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-    },
+      '@': resolve(__dirname, 'src')
+    }
   },
   build: {
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true,
-      },
+        drop_debugger: true
+      }
     },
     chunkSizeWarningLimit: 1024,
     rollupOptions: {
@@ -84,9 +84,9 @@ export default defineConfig({
             const chunk = modules.find((module) => id.includes(`/node_modules/${module}`))
             return chunk ? `vendor-${chunk}` : 'vendor'
           }
-        },
-      },
-    },
+        }
+      }
+    }
   },
   server: {
     host: '0.0.0.0',
@@ -98,8 +98,8 @@ export default defineConfig({
         target: 'xxx',
         changeOrigin: true,
         // secure: false,
-        rewrite: (path) => path.replace('/api/', '/'),
-      },
-    },
-  },
+        rewrite: (path) => path.replace('/api/', '/')
+      }
+    }
+  }
 })
