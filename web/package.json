@@ -11,6 +11,7 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/spa"
   },
   "dependencies": {
