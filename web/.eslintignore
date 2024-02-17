@@ -1,8 +1,8 @@
-node_modules
-dist
-
-# 自动生成的
-types/components.d.ts
-types/auto-imports.d.ts
-
-.DS_Store
+/dist
+/src-capacitor
+/src-cordova
+/.quasar
+/node_modules
+.eslintrc.cjs
+/src-ssr
+/quasar.config.*.temporary.compiled*

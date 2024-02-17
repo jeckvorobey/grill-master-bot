@@ -6,8 +6,7 @@ from tgbot.handlers.onboarding.static_text import github_button_text, secret_lev
 
 def make_keyboard_for_start_command() -> InlineKeyboardMarkup:
     buttons = [
-        InlineKeyboardButton(menu_text, url="https://your-webapp-url.com"),
-        # InlineKeyboardButton(secret_level_button_text, callback_data=f'{SECRET_LEVEL_BUTTON}')
+        InlineKeyboardButton(menu_text, url="http://192.168.1.10:9000/"),
     ]
 
     return InlineKeyboardMarkup([buttons])

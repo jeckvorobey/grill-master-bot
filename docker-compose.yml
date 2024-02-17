@@ -32,29 +32,19 @@ services:
       - ./.env
     depends_on:
       - db
-  ngrok:
-    image: wernight/ngrok
-    container_name: dtb_ngrok
-    ports:
-      - "4040:4040"
-    environment:
-      - NGROK_AUTHTOKEN=2bDeciZXcS59kPhh4X7BabmdsvV_pAp7aMzgvJoWjy8xjHZ3
-    command: sh -c "ngrok authtoken $$NGROK_AUTHTOKEN && ngrok http web:8000"
-    depends_on:
-      - web
-  webapp:
-    build:
-      context: .
-      dockerfile: ./web/Dockerfile
-    container_name: dtb_webapp
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./web:/app
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      - web
+#  webapp:
+#    build:
+#      context: .
+#      dockerfile: ./web/Dockerfile
+#    container_name: dtb_webapp
+#    restart: always
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./web:/app
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+#    depends_on:
+#      - web
   bot:
     build:
       context: .

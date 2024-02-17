@@ -1,33 +1,6 @@
 {
+  "extends": "@quasar/app-vite/tsconfig-preset",
   "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "outDir": "out",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-
-    "skipLibCheck": true,
-    "incremental": false,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-
-    "isolatedModules": true, // vite 增加
-    "types": [ // vite 增加
-      "vite/client"
-    ]
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue",
-    "src/types/*.d.ts"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["node_modules", "dist"]
+    "baseUrl": "."
+  }
 }
