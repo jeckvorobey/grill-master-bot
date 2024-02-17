@@ -14,6 +14,7 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
+    baseUrl: '/grill-master-bot',
     eslint: {
       fix: true,
       // include: [],
