@@ -4,10 +4,10 @@ from django.utils import timezone
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext
 
-from tgbot.handlers.onboarding import static_text
-from tgbot.handlers.utils.info import extract_user_data_from_update
 from apps.users.models import User
+from tgbot.handlers.onboarding import static_text
 from tgbot.handlers.onboarding.keyboards import make_keyboard_for_start_command
+from tgbot.handlers.utils.info import extract_user_data_from_update
 
 
 def command_start(update: Update, context: CallbackContext) -> None:

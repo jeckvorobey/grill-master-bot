@@ -5,4 +5,4 @@ from .models import Category
 class CategoryForm(forms.ModelForm):
 	class Meta:
 		model = Category
-		fields = ['name', 'label']
+		fields = ['name', 'label', 'is_active']
