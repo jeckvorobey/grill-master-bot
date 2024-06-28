@@ -11,10 +11,10 @@ class ActiveAddressManager(models.Manager):
 
 
 class Address(CreateUpdateTracker):
-	id = models.BigAutoField(primary_key=True)
-	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-	address = models.CharField(max_length=255)
-	name = models.CharField(max_length=100, null=True)
+	id = models.BigAutoField(primary_key=True, verbose_name='ID')
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name='Пользователь')
+	address = models.CharField(max_length=255, verbose_name='Адрес')
+	name = models.CharField(max_length=100, null=True, verbose_name='Название')
 	
 	# Объект с не удалёнными адресами
 	objects = ActiveAddressManager()

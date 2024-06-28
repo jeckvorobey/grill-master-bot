@@ -3,7 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title>
-          Гриль Мастрер
+          Гриль Мастер
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

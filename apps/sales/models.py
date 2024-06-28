@@ -1,14 +1,16 @@
 from django.db import models
-from django.utils import timezone
+
+from utils.models import CreateUpdateSoftDeleteTracker
 
 
-class Sale(models.Model):
-	id = models.BigAutoField(primary_key=True)
-	label = models.CharField(max_length=255)
-	value = models.IntegerField(help_text="Скидка в процентах")
-	update_at = models.DateTimeField(auto_now=True)
-	created_at = models.DateTimeField(auto_now_add=True)
-	deleted_at = models.DateTimeField(blank=True, null=True)
-	
-	def __str__(self):
-		return self.label
+class Sale(CreateUpdateSoftDeleteTracker):
+    id = models.BigAutoField(primary_key=True, verbose_name='ID')
+    label = models.CharField(max_length=255, verbose_name='Метка')
+    value = models.IntegerField(help_text="Скидка в процентах", verbose_name='Значение')
+
+    class Meta:
+        verbose_name = 'Скидка'
+        verbose_name_plural = 'Скидки'
+
+    def __str__(self):
+        return self.label

@@ -8,15 +8,14 @@ from telegram.ext import (
 )
 
 from dtb.settings import DEBUG
+from tgbot.handlers.admin import handlers as admin_handlers
+from tgbot.handlers.broadcast_message import handlers as broadcast_handlers
 from tgbot.handlers.broadcast_message.manage_data import CONFIRM_DECLINE_BROADCAST
 from tgbot.handlers.broadcast_message.static_text import broadcast_command
-from tgbot.handlers.onboarding.manage_data import SECRET_LEVEL_BUTTON
-
-from tgbot.handlers.utils import files, error
-from tgbot.handlers.admin import handlers as admin_handlers
 from tgbot.handlers.location import handlers as location_handlers
 from tgbot.handlers.onboarding import handlers as onboarding_handlers
-from tgbot.handlers.broadcast_message import handlers as broadcast_handlers
+from tgbot.handlers.onboarding.manage_data import SECRET_LEVEL_BUTTON
+from tgbot.handlers.utils import files, error
 from tgbot.main import bot
 
 
@@ -40,17 +39,18 @@ def setup_dispatcher(dp):
     dp.add_handler(CallbackQueryHandler(onboarding_handlers.secret_level, pattern=f"^{SECRET_LEVEL_BUTTON}"))
 
     # broadcast message
-    dp.add_handler(
-        MessageHandler(Filters.regex(rf'^{broadcast_command}(/s)?.*'), broadcast_handlers.broadcast_command_with_message)
-    )
-    dp.add_handler(
-        CallbackQueryHandler(broadcast_handlers.broadcast_decision_handler, pattern=f"^{CONFIRM_DECLINE_BROADCAST}")
-    )
+    # dp.add_handler(
+    #     MessageHandler(Filters.regex(rf'^{broadcast_command}(/s)?.*'),
+    #                    broadcast_handlers.broadcast_command_with_message)
+    # )
+    # dp.add_handler(
+    #     CallbackQueryHandler(broadcast_handlers.broadcast_decision_handler, pattern=f"^{CONFIRM_DECLINE_BROADCAST}")
+    # )
 
     # files
-    dp.add_handler(MessageHandler(
-        Filters.animation, files.show_file_id,
-    ))
+    # dp.add_handler(MessageHandler(
+    #     Filters.animation, files.show_file_id,
+    # ))
 
     # handling errors
     dp.add_error_handler(error.send_stacktrace_to_tg_chat)
@@ -70,5 +70,5 @@ def setup_dispatcher(dp):
     return dp
 
 
-n_workers = 0 if DEBUG else 4
+n_workers = 1 if DEBUG else 4
 dispatcher = setup_dispatcher(Dispatcher(bot, update_queue=None, workers=n_workers, use_context=True))
