@@ -6,5 +6,5 @@ from ..categories.models import Category
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
-        fields = '__all__'
+        model = Food
+        fields = ['id', 'name', 'description', 'cost', 'type']

@@ -30,5 +30,5 @@ urlpatterns = [
     path('super_secter_webhook/', csrf_exempt(views.TelegramBotWebhookView.as_view())),
 
     # api routs
-    path('api/foods/', FoodsApiView.as_view()),
+    path('api/', include('dtb.api_urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
