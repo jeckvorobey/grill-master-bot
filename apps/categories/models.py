@@ -16,5 +16,5 @@ class Category(CreateUpdateTracker):
 		verbose_name_plural = 'Категории'
 
 	def __str__(self):
-		return self.label
+		return self.name
 
